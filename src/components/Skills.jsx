@@ -5,20 +5,21 @@ import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import { SkillsData } from "../data/SkillsData";
 import { useState } from "react";
+
 function Skills() {
   const [selectedTitle, setSelectedTitle] = useState(0);
   const [selectedSkill, setSelectedSkill] = useState(0);
 
+  function guidGenerator() {
+    var S4 = function () {
+      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    return S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4();
+  }
   const selectSkills = (id) => {
     setSelectedTitle(id);
     setSelectedSkill(0);
   };
-  console.log(SkillsData[selectedTitle].skills[0]);
-  console.log(
-    SkillsData[selectedTitle].skills.map(function (element) {
-      return element;
-    })
-  );
 
   return (
     <div className='skills p-4 d-flex justify-content-center align-items-center'>
@@ -49,14 +50,14 @@ function Skills() {
             <Row className='mt-2'>
               <Col className='skill-button'>
                 {SkillsData[selectedTitle].skills.map((element) => (
-                  <button key={element.id} onClick={() => setSelectedSkill(element.id)}>
+                  <button key={guidGenerator()} onClick={() => setSelectedSkill(element.id)}>
                     {element.name}
                   </button>
                 ))}
               </Col>
             </Row>
           </Col>
-          <Col className='skill-content' key={SkillsData[selectedTitle].skills[selectedSkill].id}>
+          <Col className='skill-content' key={guidGenerator()}>
             <h3>{SkillsData[selectedTitle].skills[selectedSkill].name}</h3>
             <p>{SkillsData[selectedTitle].skills[selectedSkill].text}</p>
           </Col>
@@ -64,7 +65,7 @@ function Skills() {
         <Row className='d-flex justify-content-around mt-2'>
           {SkillsData[selectedTitle].skills[selectedSkill].images.map((element) => (
             <Col xl={4} lg={4} md={4} className='skill-img'>
-              <img key={element.id} src={element.url}></img>
+              <img key={guidGenerator()} src={element.url}></img>
             </Col>
           ))}
         </Row>
