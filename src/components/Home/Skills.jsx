@@ -1,9 +1,9 @@
 import React from "react";
-import "../scss/skills.scss";
+import "../../scss/skills.scss";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
-import { SkillsData } from "../data/SkillsData";
+import { SkillsData } from "../../data/SkillsData";
 import { useState } from "react";
 
 function Skills() {

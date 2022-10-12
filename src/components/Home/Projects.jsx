@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
-import { ProjectsData } from "../data/ProjectsData";
-import "../scss/projects.scss";
+import { ProjectsData } from "../../data/ProjectsData";
+import "../../scss/projects.scss";
 import ProjectsModal from "./ProjectModal";
+
 function Projects() {
   const [show, setShow] = useState(false);
   const [project, setProject] = useState(0);
@@ -11,6 +12,7 @@ function Projects() {
     setShow(true);
     setProject(project);
   };
+
   const AddProject = (data) => {
     data = data.data;
     // eslint-disable-next-line default-case
@@ -28,7 +30,7 @@ function Projects() {
               <img
                 className='add-icon'
                 onClick={() => expand(data.id)}
-                src={require("../icon/add.png")}></img>
+                src={require("../../icon/add.png")}></img>
             </Col>
             <Col xl={data.col[1]} lg={data.col[1]} md={data.col[1]}>
               <img style={data.style.img} className='w-100' src={data.preview}></img>
@@ -52,7 +54,7 @@ function Projects() {
               <img
                 className='add-icon'
                 onClick={() => expand(data.id)}
-                src={require("../icon/add.png")}></img>
+                src={require("../../icon/add.png")}></img>
             </Col>
           </Row>
         );
@@ -67,7 +69,7 @@ function Projects() {
                 <img
                   className='add-icon'
                   onClick={() => expand(data.id)}
-                  src={require("../icon/add.png")}></img>
+                  src={require("../../icon/add.png")}></img>
               </Col>
             ))}
           </Row>
@@ -76,7 +78,7 @@ function Projects() {
     }
   };
   return (
-    <div className='projects'>
+    <div containerId='project' className='projects'>
       {ProjectsData.map((element) => (
         <AddProject key={element.id} data={element}></AddProject>
       ))}

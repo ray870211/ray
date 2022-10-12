@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import "../scss/header.scss";
-
+import { Link } from "react-router-dom";
 function Header() {
   const [isScroll, setIsScroll] = useState(false);
 
@@ -23,18 +23,18 @@ function Header() {
   return (
     <div className={isScroll ? "header change" : "header"}>
       <img alt='' className='logo'></img>
-      <a href='' className='navigation'>
+      <Link to='/' className='navigation'>
         HOME
-      </a>
-      <a href='' className='navigation'>
+      </Link>
+      <Link to='/' className='navigation'>
         關於我
-      </a>
-      <a href='' className='navigation'>
+      </Link>
+      <Link to='/Article' className='navigation'>
         文章
-      </a>
-      <a href='' className='navigation'>
+      </Link>
+      <Link to='project' className='navigation'>
         作品
-      </a>
+      </Link>
 
       <a href='' className='navigation'></a>
     </div>

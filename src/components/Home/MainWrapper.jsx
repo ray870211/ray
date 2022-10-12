@@ -1,7 +1,6 @@
 import React from "react";
 import Content from "./Content";
 import Sidebar from "./Sidebar";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.css";

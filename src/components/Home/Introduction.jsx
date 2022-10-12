@@ -2,9 +2,9 @@ import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
-import github_icon from "../images/github 1.svg";
-import gmail_icon from "../images/gmail-icon.svg";
-import "../scss/introduction.scss";
+import github_icon from "../../images/github 1.svg";
+import gmail_icon from "../../images/gmail-icon.svg";
+import "../../scss/introduction.scss";
 function Introduction() {
   return (
     <div className='introduction d-flex  align-items-center justify-content-center'>
@@ -17,7 +17,7 @@ function Introduction() {
             <p>對前端開發充滿興趣，喜歡鑽研各種不同的技術。</p>
           </Col>
           <Col className='myself d-flex align-items-center'>
-            <img className='d-block' src={require("../images/ray.png")}></img>
+            <img className='d-block' src={require("../../images/ray.png")}></img>
             <h3 className=''>李崑睿</h3>
           </Col>
         </Row>
