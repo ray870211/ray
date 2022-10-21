@@ -14,6 +14,7 @@ function Introduction() {
             <h1>
               Ray<br></br> Front end Developer
             </h1>
+
             <p>對前端開發充滿興趣，喜歡鑽研各種不同的技術。</p>
           </Col>
           <Col className='myself d-flex align-items-center'>
