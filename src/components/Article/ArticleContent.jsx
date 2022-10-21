@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Container from "react-bootstrap/esm/Container";
 import Api from "../../services/Api";
+import "react-notion/src/styles.css";
+import "prismjs/themes/prism-tomorrow.css"; // only needed for code highlighting
 import { NotionRenderer } from "react-notion";
 import { ArticleData } from "../../data/ArticleData";
-import "react-notion/src/styles.css";
-import "prismjs/themes/prism-tomorrow.css";
 
 import Header from "../Header";
 function ArticleContent(props) {

@@ -13,7 +13,7 @@ export const ArticleData = [
   },
   {
     id: 2,
-    postId: "6e748f1da30e47b48b6b4fb48deb0c3d",
+    postId: "3b46badf1f7440dabc776b08c233e32c",
     tag: [],
     preview: "",
   },
