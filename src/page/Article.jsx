@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import ArticleContent from "./ArticleContent";
-import Sidebar from "./Sidebar";
+import React from "react";
+import ArticleContent from "../components/Article/ArticleContent";
+import Sidebar from "../components/Article/Sidebar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Header from "../components/Header";
 import "bootstrap/dist/css/bootstrap.css";
 function ArticleWrapper() {
-  const [notionId, setNotionId] = useState(0);
   return (
     <div className='main-wrapper'>
+      <Header></Header>
       <Row className='m-0'>
         <Col className='p-0' xl={1} lg={1} md={2}>
-          <Sidebar setNotionId={setNotionId}></Sidebar>
+          <Sidebar></Sidebar>
         </Col>
         <Col className='p-0' xl={11} lg={11} md={10}>
-          <ArticleContent notionId={notionId}></ArticleContent>
+          <ArticleContent></ArticleContent>
         </Col>
       </Row>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import Row from "react-bootstrap/esm/Row";
-import "../../scss/sidebar.scss";
+import "../../sass/components/sidebar.sass";
 
 function Sidebar() {
   return (

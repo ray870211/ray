@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import { ProjectsData } from "../../data/ProjectsData";
-import "../../scss/projects.scss";
+import "../../sass/components/projects.sass";
 import ProjectsModal from "./ProjectModal";
 
 function Projects() {

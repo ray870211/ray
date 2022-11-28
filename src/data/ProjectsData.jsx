@@ -79,6 +79,7 @@ export const ProjectsData = [
     url: "../",
     style: {
       title: {
+        position: "relative",
         backgroundColor: "#686F6F",
         borderRadius: "20px",
         color: "white",

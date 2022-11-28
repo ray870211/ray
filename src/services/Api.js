@@ -8,4 +8,5 @@ class Api {
     return apiCompletionPromise;
   };
 }
+
 export default Api;

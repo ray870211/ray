@@ -6,11 +6,11 @@ import { NotionRenderer } from "react-notion";
 import { ArticleData } from "../../data/ArticleData";
 import { useParams } from "react-router-dom";
 
-function ArticleContent(props) {
-  const PAGE_ID = useParams().notionCode;
+function NotinContents(props) {
+  const PAGE_ID = ArticleData[props.notionId].postId;
   const [loading, setLoading] = useState(false);
   const [notionPageData, setNotionPageData] = useState(null);
-  console.log(PAGE_ID.notionCode);
+
   useEffect(() => {
     setNotionPageData(false);
     Api.loadNotionContent(PAGE_ID)
@@ -24,13 +24,7 @@ function ArticleContent(props) {
       .finally(() => {
         // setLoading(false);
       });
-  }, [window.location.pathname]);
-  return (
-    <>
-      <div className='notion-content'>
-        {loading && <NotionRenderer blockMap={notionPageData}></NotionRenderer>}
-      </div>
-    </>
-  );
+  }, [props.notionId]);
+  return <></>;
 }
-export default ArticleContent;
+export default NotinContents;

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../scss/skills.scss";
+import "../../sass/components/skills.sass";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";

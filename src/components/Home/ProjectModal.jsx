@@ -3,7 +3,7 @@ import Api from "../../services/Api";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.css";
 import { ProjectsData } from "../../data/ProjectsData";
-import "../../scss/project_modal.scss";
+import "../../sass/components/project_modal.sass";
 import { NotionRenderer } from "react-notion";
 import "react-notion/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css";
