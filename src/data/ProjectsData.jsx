@@ -4,7 +4,7 @@ export const ProjectsData = [
     title: "圖書館人臉辨識",
     col: [3, 9],
     template: 1,
-    preview: require("../images/圖書館1.png"),
+    preview: require("..//assets/images/圖書館1.png"),
     url: "../",
     style: {
       title: {
@@ -18,8 +18,8 @@ export const ProjectsData = [
       },
     },
     images: [
-      { id: 0, url: require("../images/華岡1.png") },
-      { id: 1, url: require("../images/圖書館1.png") },
+      { id: 0, url: require("..//assets/images/華岡1.png") },
+      { id: 1, url: require("..//assets/images/圖書館1.png") },
     ],
     pageId: "3b46badf1f7440dabc776b08c233e32c",
   },
@@ -28,7 +28,7 @@ export const ProjectsData = [
     title: "華岡自動發報系統",
     col: [3, 9],
     template: 2,
-    preview: require("../images/華岡1.png"),
+    preview: require("..//assets/images/華岡1.png"),
     url: "../",
     style: {
       title: {
@@ -42,8 +42,8 @@ export const ProjectsData = [
       },
     },
     images: [
-      { id: 0, url: require("../images/華岡1.png") },
-      { id: 1, url: require("../images/圖書館1.png") },
+      { id: 0, url: require("..//assets/images/華岡1.png") },
+      { id: 1, url: require("../assets/images/圖書館1.png") },
     ],
     pageId: "6e748f1da30e47b48b6b4fb48deb0c3d",
   },
@@ -52,7 +52,7 @@ export const ProjectsData = [
     title: "攝影師作品集",
     col: [12, 4],
     template: 3,
-    preview: require("../images/作品集.png"),
+    preview: require("..//assets/images/作品集.png"),
     url: "../",
     style: {
       title: {
@@ -66,8 +66,8 @@ export const ProjectsData = [
       },
     },
     images: [
-      { id: 0, url: require("../images/作品集2.png") },
-      { id: 1, url: require("../images/作品集3.png") },
+      { id: 0, url: require("..//assets/images/作品集2.png") },
+      { id: 1, url: require("..//assets/images/作品集3.png") },
     ],
   },
   {
@@ -75,7 +75,7 @@ export const ProjectsData = [
     title: "AsiaLife",
     col: [12, 9],
     template: 3,
-    preview: require("../images/Swift1.png"),
+    preview: require("..//assets/images/Swift1.png"),
     url: "../",
     style: {
       title: {
@@ -90,7 +90,7 @@ export const ProjectsData = [
     },
     images: [
       { id: 0, url: "" },
-      { id: 1, url: require("../images/Swift2.png") },
+      { id: 1, url: require("..//assets/images/Swift2.png") },
     ],
   },
 ];

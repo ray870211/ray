@@ -30,7 +30,7 @@ function Projects() {
               <img
                 className='add-icon'
                 onClick={() => expand(data.id)}
-                src={require("../../icon/add.png")}></img>
+                src={require("../../assets/icon/add.png")}></img>
             </Col>
             <Col xl={data.col[1]} lg={data.col[1]} md={data.col[1]}>
               <img style={data.style.img} className='w-100' src={data.preview}></img>
@@ -54,7 +54,7 @@ function Projects() {
               <img
                 className='add-icon'
                 onClick={() => expand(data.id)}
-                src={require("../../icon/add.png")}></img>
+                src={require("../../assets/icon/add.png")}></img>
             </Col>
           </Row>
         );
@@ -69,7 +69,7 @@ function Projects() {
                 <img
                   className='add-icon'
                   onClick={() => expand(data.id)}
-                  src={require("../../icon/add.png")}></img>
+                  src={require("../../assets/icon/add.png")}></img>
               </Col>
             ))}
           </Row>

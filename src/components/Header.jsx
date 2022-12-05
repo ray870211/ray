@@ -26,6 +26,7 @@ function Header() {
       <Link to='/' className='navigation'>
         HOME
       </Link>
+
       <Link to='/a58be80e9490460babefc359634a1b90' className='navigation'>
         文章
       </Link>
