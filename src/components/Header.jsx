@@ -7,7 +7,7 @@ function Header() {
 
   useEffect(() => {
     const handleScroll = (event) => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 405) {
         setIsScroll(true);
       } else {
         setIsScroll(false);
@@ -21,7 +21,8 @@ function Header() {
     };
   }, []);
   return (
-    <div className={isScroll ? "header change" : "header"}>
+    <div className={isScroll ? "header header-change" : "header"}>
+      <div className='logo'>Ray</div>
       {/* <img alt='' className='logo'></img> */}
       <Link to='/' className='navigation'>
         HOME
@@ -30,7 +31,6 @@ function Header() {
       <Link to='/a58be80e9490460babefc359634a1b90' className='navigation'>
         文章
       </Link>
-
       <a href='' className='navigation'></a>
     </div>
   );

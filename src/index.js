@@ -7,7 +7,7 @@ import LoadingScreen from "./components/LoadingScreen";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <LoadingScreen></LoadingScreen> */}
+    <LoadingScreen></LoadingScreen>
     <App></App>
   </React.StrictMode>
 );

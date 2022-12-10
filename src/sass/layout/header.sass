@@ -7,6 +7,7 @@
   display: flex
   justify-content: end
   align-items: center
+  border-bottom: 1px solid #fff
 
   &
     position: -webkit-sticky
@@ -16,13 +17,13 @@
     transition: 1s
 
   .logo
-    height: 50px
     margin-right: auto
     margin-left: 20px
+    color: #fff
 
   .navigation
     text-decoration: none
-    color: rgb(255, 255, 255)
+    color: #fff
     margin: 10px
 
   .bars
@@ -32,5 +33,13 @@
   a
     color: currentColor
 
-.change
-  background-color: rgb(144, 107, 107) !important
+.header-change
+  display: flex
+  justify-content: end
+  align-items: center
+  background-color: rgb(255, 255, 255) !important
+  border-bottom: 1px solid rgb(0,0,0)
+  .logo
+    color: rgb(0,0,0)
+  .navigation
+    color: rgb(0, 0, 0)
