@@ -1,13 +1,12 @@
 body
     // background-color: black !important
     transition-duration: .5s
-    .skills
-        .section_skills
-            padding: 10rem 3rem
+    .section_skills
+        padding: 10rem 3rem
 
-            transform: skewY(-7deg)
-            .transform_reset
-                transform: skewY(7deg)
+        transform: skewY(-7deg)
+        .transform_reset
+            transform: skewY(7deg)
             .skills-contents
                 margin-top: 5rem
                 margin-bottom: 5rem
@@ -20,3 +19,8 @@ body
                 width: 50%
     .autobiography
         margin: 15rem 3rem
+    .projects
+        // margin: 5rem 3rem
+        display: grid
+        grid-template-columns: repeat(auto-fill,minmax(350px,1fr))
+        grid-gap: 20px

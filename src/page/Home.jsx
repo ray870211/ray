@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useReducer } from "react";
 //modules
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
@@ -13,9 +13,8 @@ import "../sass/components/introduction.sass";
 import "../sass/components/menu.sass";
 //components
 import Header from "../components/Header";
-import AddProject from "../components/Home/Projects";
-import ProjectsModal from "../components/Home/ProjectModal";
 import Menu from "../components/Home/Menu";
+import ProjectsModal from "../components/Home/ProjectModal";
 //assets
 import github_icon from "../assets/images/github 1.svg";
 import gmail_icon from "../assets/images/gmail-icon.svg";
@@ -23,20 +22,34 @@ import { ReactComponent as DownArrow } from "../assets/images/down-arrow.svg";
 import { ReactComponent as WebDevelopmentIcon } from "../assets/images/basic-webpage-img-txt_97846.svg";
 import { ReactComponent as Tools } from "../assets/images/tool_120757.svg";
 //data
-import { SkillsData } from "../data/SkillsData";
 import { ProjectsData } from "../data/ProjectsData";
 import CardHeader from "react-bootstrap/esm/CardHeader";
-import NotionButton from "../components/Home/NotionButton";
+import Projects from "../components/Home/Projects";
 
+const initialState = {
+  modalShow: false,
+  projectsData: {},
+  modalData: {},
+};
+function reducer(state, action) {
+  switch (action.type) {
+    //取得文字按鈕等資料
+    case "projectData":
+      return { ...state, projectsData: action.projectData };
+    //當前modal
+    case "modalShow":
+      return { ...state, modalShow: action.setShow };
+    case "modalData":
+      return { ...state, modalData: action.modalData };
+    default:
+      return state;
+  }
+}
 function Home() {
-  const [show, setShow] = useState(false);
-  const [project, setProject] = useState(0);
-  const [view, setView] = useState("introduction");
   //section background image
   const sectionBackgroundImg = [require("../assets/images/pexels-veeterzy-303383.jpg")];
   //區塊高度
   const [sectionOffsetTop, setSectionOffsetTop] = useState([]);
-  const [pageScrollY, setPageScrollY] = useState(0);
   const introductionRef = useRef();
   const skillsRef = useRef();
   const autobiographyRef = useRef();
@@ -56,21 +69,20 @@ function Home() {
   const { scrollY } = useScroll();
   useEffect(() => {
     return scrollY.onChange((latest) => {
-      setPageScrollY(latest);
       // console.log("Page scroll: ", (latest + window.innerHeight) / document.body.scrollHeight);
-      if (latest < 200) {
+      if (latest < sectionOffsetTop[0]) {
         document.body.style.backgroundColor = "#000";
-        setView("introduction");
       }
-      if (latest > 200) {
+      if (latest > sectionOffsetTop[1]) {
         document.body.style.backgroundColor = "#fff";
-        setView("skills");
       }
       if (latest > 1200) {
-        setView("projects");
       }
     });
   }, []);
+  //modal
+
+  const [projectState, changeProjectState] = useReducer(reducer, initialState);
 
   function guidGenerator() {
     var S4 = function () {
@@ -83,9 +95,9 @@ function Home() {
     <div className='main'>
       <div className='main-content'>
         <Header></Header>
-        <div
-          ref={introductionRef}
-          className='introduction d-flex  align-items-center justify-content-center'>
+        <section
+          className='introduction d-flex  align-items-center justify-content-center'
+          ref={introductionRef}>
           <Container fluid className='p-0 '>
             <Row className='m-0'>
               <Col md={6} className='title text-center'>
@@ -128,15 +140,17 @@ function Home() {
             </Row>
             <DownArrow className='down-arrow' fill='#ffffff' />
           </Container>
-        </div>
-        <div ref={skillsRef} className='skills d-flex '>
+        </section>
+
+        <section
+          ref={skillsRef}
+          className='section_skills'
+          style={{ backgroundImage: `url(${sectionBackgroundImg[0]})` }}>
           <motion.div
             transition={{ duration: 0.5 }}
             whileInView={{ x: 0, y: 0, opacity: 1 }}
             initial={{ y: 20, opacity: 0 }}>
-            <section
-              className='section_skills'
-              style={{ backgroundImage: `url(${sectionBackgroundImg[0]})` }}>
+            <div className='skills d-flex '>
               <div className='transform_reset'>
                 <Row className='skills-contents'>
                   <Col>
@@ -192,11 +206,11 @@ function Home() {
                   </Col>
                 </Row>
               </div>
-            </section>
+            </div>
           </motion.div>
-        </div>
-        <div ref={autobiographyRef} className='autobiography'>
-          <section>
+        </section>
+        <section ref={autobiographyRef} className='autobiography'>
+          <div>
             <Row>
               <Col md={6}>
                 <h3>喜歡學習，挑戰自我</h3>
@@ -212,14 +226,23 @@ function Home() {
                 <img src={require("../assets/images/ray.jpeg")}></img>
               </Col>
             </Row>
-          </section>
-        </div>
+          </div>
+        </section>
 
-        <div ref={projectRef} containerId='project' className='projects'>
-          <AddProject></AddProject>
-          <ProjectsModal project={project} show={show} setShow={setShow}></ProjectsModal>
-        </div>
+        <section ref={projectRef} className='projects'>
+          {ProjectsData.map((Data) => (
+            <Projects
+              projectData={{ type: "projectData", projectData: ProjectsData[Data.id] }}
+              changeProjectState={changeProjectState}
+              key={Data.id}></Projects>
+          ))}
+        </section>
       </div>
+
+      <ProjectsModal
+        modalData={projectState.modalData}
+        changeProjectState={changeProjectState}
+        modalShow={projectState.modalShow}></ProjectsModal>
       <div className='menu'>
         <Menu sectionOffsetTop={sectionOffsetTop}></Menu>
       </div>
