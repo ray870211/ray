@@ -64,12 +64,11 @@ function Home() {
   }, [projectRef]);
   //動畫
   const controls = useAnimationControls();
-  useEffect(() => {});
   //高度與滾動
   const { scrollY } = useScroll();
   useEffect(() => {
     return scrollY.onChange((latest) => {
-      // console.log("Page scroll: ", (latest + window.innerHeight) / document.body.scrollHeight);
+      document.body.style.backgroundColor = "#000";
       if (latest < sectionOffsetTop[0]) {
         document.body.style.backgroundColor = "#000";
       }
@@ -79,7 +78,7 @@ function Home() {
       if (latest > 1200) {
       }
     });
-  }, []);
+  }, [scrollY, sectionOffsetTop]);
   //modal
 
   const [projectState, changeProjectState] = useReducer(reducer, initialState);
@@ -149,17 +148,20 @@ function Home() {
           <motion.div
             transition={{ duration: 0.5 }}
             whileInView={{ x: 0, y: 0, opacity: 1 }}
-            initial={{ y: 20, opacity: 0 }}>
+            initial={{ y: 20, opacity: 0 }}
+            viewport={{ once: true }}>
             <div className='skills d-flex '>
               <div className='transform_reset'>
                 <Row className='skills-contents'>
                   <Col>
                     <Card className='skills-card'>
                       <CardHeader className='d-flex justify-content-center align-items-center'>
-                        <h3>PROGRAMMING LANGUAGES & OTHERS</h3>
+                        <h3>DOCUMENT PROCESSING</h3>
                       </CardHeader>
                       <ul>
-                        <li>abc</li>
+                        <li>- Word</li>
+                        <li>- PowerPoint</li>
+                        <li>- Excel</li>
                       </ul>
                     </Card>
                   </Col>
@@ -209,25 +211,34 @@ function Home() {
             </div>
           </motion.div>
         </section>
-        <section ref={autobiographyRef} className='autobiography'>
-          <div>
-            <Row>
-              <Col md={6}>
-                <h3>喜歡學習，挑戰自我</h3>
-                <p>
-                  我叫李崑睿，亞洲大學，原就讀於財金系，在大三的時後對程式非常有興趣，因而轉到資工系，在學校的人工智慧實驗時中負責前端網站開發。
-                  <br />
-                  我喜歡React這個框架並且正在精進學習中，我可以與後端工程師討論API規格並且串接，我也擅長用PHP來撰寫後端程式。也喜歡Swift這個程式語言，希望未來有機會精進它。
-                  <br />
-                  平日中我會透過Udemy自學各種技能，參加FB各種前後端社團，訂閱許多電子報來學習新知，我期許自己可以成為一個人就能完成大部分事情的全端工程師。
-                </p>
-              </Col>
-              <Col md={6}>
-                <img src={require("../assets/images/ray.jpeg")}></img>
-              </Col>
-            </Row>
-          </div>
-        </section>
+        <motion.div
+          transition={{ duration: 0.5 }}
+          whileInView={{ x: 0, y: 0, opacity: 1 }}
+          initial={{ y: 40, opacity: 0.5 }}
+          viewport={{ once: true }}>
+          <section ref={autobiographyRef} className='autobiography'>
+            <div>
+              <Row>
+                <Col md={6}>
+                  <h3>喜歡學習，挑戰自我</h3>
+                  <p className='autobiography-text'>
+                    我叫李崑睿，亞洲大學，原就讀於財金系，在大三的時後對程式非常有興趣，因而轉到資工系，在學校的人工智慧實驗時中負責前端網站開發。
+                  </p>
+                  <p className='autobiography-text'>
+                    與後端工程師共同架構後台系統，API規格及串接，獨自完成UI/UX，也可以勝任後台開發，目前在學習Node.js，目前主要學習React、Redux，以及React
+                    Hook應用等。
+                  </p>
+                  <p className='autobiography-text'>
+                    平日中我會透過Udemy自學各種技能，參加FB各種前後端社團，訂閱許多電子報來學習新知，我期許自己可以成為一名可靠的全端工程師。
+                  </p>
+                </Col>
+                <Col md={6}>
+                  <img src={require("../assets/images/ray.jpeg")}></img>
+                </Col>
+              </Row>
+            </div>
+          </section>
+        </motion.div>
 
         <section ref={projectRef} className='projects'>
           {ProjectsData.map((Data) => (
@@ -239,10 +250,10 @@ function Home() {
         </section>
       </div>
 
-      <ProjectsModal
+      {/* <ProjectsModal
         modalData={projectState.modalData}
         changeProjectState={changeProjectState}
-        modalShow={projectState.modalShow}></ProjectsModal>
+        modalShow={projectState.modalShow}></ProjectsModal> */}
       <div className='menu'>
         <Menu sectionOffsetTop={sectionOffsetTop}></Menu>
       </div>

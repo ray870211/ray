@@ -25,7 +25,7 @@ function Projects(props) {
           <motion.div animate={{ opacity: isHovered ? 1 : 0 }}>
             <div className='project-image-text'>
               <div className='left'>
-                <div>WEBSIDE</div>
+                <div>{projectData.system}</div>
                 <div>{projectData.title}</div>
               </div>
               <div className='right'>
