@@ -4,7 +4,7 @@ import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Card from "react-bootstrap/esm/Card";
-import { motion, useScroll, useAnimationControls } from "framer-motion";
+import { motion, useScroll, useAnimationControls, animate } from "framer-motion";
 //sass
 import "../sass/style.sass";
 import "../sass/page/home.sass";
@@ -54,6 +54,9 @@ function Home() {
   const skillsRef = useRef();
   const autobiographyRef = useRef();
   const projectRef = useRef();
+  const [arriveBottom, setArriveBottom] = useState(false);
+  const [overTopView, setOverTopView] = useState(false);
+
   useEffect(() => {
     setSectionOffsetTop([
       introductionRef.current.offsetTop,
@@ -64,25 +67,31 @@ function Home() {
   }, [projectRef]);
   //動畫
   const controls = useAnimationControls();
+  const menuDisplay = {
+    open: { opacity: 1, x: 0 },
+    closed: { opacity: 0, x: "-100%" },
+  };
   //高度與滾動
   const { scrollY } = useScroll();
   useEffect(() => {
     return scrollY.onChange((latest) => {
+      console.log();
       document.body.style.backgroundColor = "#000";
-      if (latest < sectionOffsetTop[0]) {
-        document.body.style.backgroundColor = "#000";
-      }
-      if (latest > sectionOffsetTop[1]) {
+      setOverTopView(false);
+      if (latest > sectionOffsetTop[0]) {
         document.body.style.backgroundColor = "#fff";
+        setOverTopView(true);
       }
-      if (latest > 1200) {
+      if (latest > sectionOffsetTop[3] + window.innerHeight - 100) {
+        setArriveBottom(true);
+        console.log("abc");
+      } else {
+        setArriveBottom(false);
       }
     });
   }, [scrollY, sectionOffsetTop]);
   //modal
-
   const [projectState, changeProjectState] = useReducer(reducer, initialState);
-
   function guidGenerator() {
     var S4 = function () {
       return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
@@ -93,7 +102,7 @@ function Home() {
   return (
     <div className='main'>
       <div className='main-content'>
-        <Header></Header>
+        <Header headerIsScroll={overTopView}></Header>
         <section
           className='introduction d-flex  align-items-center justify-content-center'
           ref={introductionRef}>
@@ -101,7 +110,7 @@ function Home() {
             <Row className='m-0'>
               <Col md={6} className='title text-center'>
                 <motion.div animate={controls}>
-                  <h1>
+                  <h1 className={overTopView ? "p-change" : ""}>
                     Ray<br></br> Web Developer
                   </h1>
                   <p>對前端開發充滿興趣，喜歡鑽研各種不同的技術。</p>
@@ -133,7 +142,7 @@ function Home() {
                   <strong>Details:</strong>
                   <br></br>
                   <br></br>
-                  <p>李崑睿，24歲，目前居住在台中。</p>
+                  <p className={overTopView ? "p-change" : ""}>李崑睿，24歲，目前居住在台中。</p>
                 </div>
               </Col>
             </Row>
@@ -250,13 +259,15 @@ function Home() {
         </section>
       </div>
 
-      {/* <ProjectsModal
+      <ProjectsModal
         modalData={projectState.modalData}
         changeProjectState={changeProjectState}
-        modalShow={projectState.modalShow}></ProjectsModal> */}
-      <div className='menu'>
-        <Menu sectionOffsetTop={sectionOffsetTop}></Menu>
-      </div>
+        modalShow={projectState.modalShow}></ProjectsModal>
+      <motion.div animate={arriveBottom ? "open" : "close"} variants={menuDisplay}>
+        <div className='menu'>
+          <Menu sectionOffsetTop={sectionOffsetTop}></Menu>
+        </div>
+      </motion.div>
     </div>
   );
 }

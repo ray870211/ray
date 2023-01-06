@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { motion, useScroll } from "framer-motion";
+import { animate, motion, useScroll } from "framer-motion";
 function Menu(props) {
   const headerOffsetTop = 42;
   //progress

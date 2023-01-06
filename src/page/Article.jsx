@@ -40,7 +40,12 @@ function ArticleWrapper() {
         <Col className='p-0' xl={11} lg={11} md={10}>
           <div className='notion-content'>
             {loading && (
-              <NotionRenderer blockMap={notionPageData} fullPage={true} darkMode={false} />
+              <NotionRenderer
+                hideHeader={true}
+                blockMap={notionPageData}
+                fullPage={true}
+                darkMode={false}
+              />
               // <>abb</>
             )}
           </div>

@@ -6,6 +6,7 @@ import "react-notion/src/styles.css";
 import "prismjs/themes/prism-tomorrow.css"; // only needed for code highlighting
 import { NotionRenderer } from "react-notion";
 import Api from "../../services/Api";
+//
 import "../../sass/components/project_modal.sass";
 import { ReactComponent as CancelButton } from "../../assets/icon/cancel_96921.svg";
 import Spinner from "react-bootstrap/Spinner";
@@ -33,10 +34,9 @@ function ProjectModal(props) {
           // setLoading(false);
         });
     }
-  }, [PAGE_ID]);
+  }, [PAGE_ID, props.modalShow]);
   const projectOnHide = () => {
     props.changeProjectState({ type: "modalShow", setShow: false });
-    console.log("ass");
   };
   return (
     <>
