@@ -18,7 +18,6 @@ import ProjectsModal from "../components/Home/ProjectModal";
 //assets
 import github_icon from "../assets/images/github 1.svg";
 import gmail_icon from "../assets/images/gmail-icon.svg";
-import { ReactComponent as DownArrow } from "../assets/images/down-arrow.svg";
 import { ReactComponent as WebDevelopmentIcon } from "../assets/images/basic-webpage-img-txt_97846.svg";
 import { ReactComponent as Tools } from "../assets/images/tool_120757.svg";
 //data
@@ -68,23 +67,30 @@ function Home() {
   //動畫
   const controls = useAnimationControls();
   const menuDisplay = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 0, x: "-100%" },
+    open: { opacity: 1, x: 0, display: "block" },
+    closed: {
+      opacity: 0,
+      y: "100%",
+      transitionEnd: {
+        display: "none",
+      },
+    },
   };
   //高度與滾動
   const { scrollY } = useScroll();
   useEffect(() => {
+    document.body.style.backgroundColor = "#000";
     return scrollY.onChange((latest) => {
-      console.log();
+      console.log(sectionOffsetTop[3]);
+
       document.body.style.backgroundColor = "#000";
       setOverTopView(false);
       if (latest > sectionOffsetTop[0]) {
         document.body.style.backgroundColor = "#fff";
         setOverTopView(true);
       }
-      if (latest > sectionOffsetTop[3] + window.innerHeight - 100) {
+      if (latest > sectionOffsetTop[3] - 200) {
         setArriveBottom(true);
-        console.log("abc");
       } else {
         setArriveBottom(false);
       }
@@ -117,7 +123,7 @@ function Home() {
                 </motion.div>
               </Col>
 
-              <Col md={6} className='myself d-flex '>
+              <Col sm={12} md={6} className='myself d-flex '>
                 <motion.div
                   transition={{ duration: 0.5, delay: 0.2 }}
                   animate={{ x: 0, y: 0, opacity: 1 }}
@@ -127,9 +133,9 @@ function Home() {
               </Col>
             </Row>
             <Row className='m-0 mt-4'>
-              <Col className='button-group d-flex'>
+              <Col md={6} className='button-group  d-flex'>
                 <motion.div
-                  className='social-icons'
+                  className='social-icons '
                   animate={{ x: 10, y: 0 }}
                   initial={{ x: 1000 }}
                   transition={{ duration: 1.5 }}>
@@ -137,7 +143,7 @@ function Home() {
                   <img className='social-icon' src={gmail_icon}></img>
                 </motion.div>
               </Col>
-              <Col className='mail'>
+              <Col md={6} className='mail'>
                 <div className='details'>
                   <strong>Details:</strong>
                   <br></br>
@@ -146,7 +152,6 @@ function Home() {
                 </div>
               </Col>
             </Row>
-            <DownArrow className='down-arrow' fill='#ffffff' />
           </Container>
         </section>
 
@@ -263,11 +268,11 @@ function Home() {
         modalData={projectState.modalData}
         changeProjectState={changeProjectState}
         modalShow={projectState.modalShow}></ProjectsModal>
-      <motion.div animate={arriveBottom ? "open" : "close"} variants={menuDisplay}>
-        <div className='menu'>
+      <div className='menu'>
+        <motion.div animate={arriveBottom ? "closed" : "open"} variants={menuDisplay}>
           <Menu sectionOffsetTop={sectionOffsetTop}></Menu>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 }

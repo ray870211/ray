@@ -24,7 +24,7 @@ function ArticleWrapper() {
       .then((res) => {
         setNotionPageData(res.data);
         setLoading(true);
-        console.log(res.data);
+        document.body.style.backgroundColor = "rgb(255,255,255)";
       })
       .catch((err) => {
         console.log(err);
@@ -37,7 +37,7 @@ function ArticleWrapper() {
     <div className='main-wrapper'>
       <Header></Header>
       <Row className='m-0'>
-        <Col className='p-0' xl={11} lg={11} md={10}>
+        <Col className='p-0' xl={12} lg={12} md={12}>
           <div className='notion-content'>
             {loading && (
               <NotionRenderer

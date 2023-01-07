@@ -2,10 +2,7 @@ body
     transition-duration: .5s
     margin: 0px !important
     padding: 0
-    // &::-webkit-scrollbar
-    //     display: none
 
-    // background-color: black !important
     .section_skills
         padding: 10rem 3rem
         transform: skewY(-7deg)
@@ -16,6 +13,10 @@ body
             .skills-contents
                 margin-top: 5rem
                 margin-bottom: 5rem
+                .card
+                    @media (max-width:768px)
+                        margin-bottom: 2rem
+
         .skills-card
             background-color: rgb(255,255,255,.8)
             ul
@@ -29,6 +30,12 @@ body
             margin-bottom: 2rem
     .projects
         // margin: 5rem 3rem
+        padding: 20px
         display: grid
-        grid-template-columns: repeat(auto-fill,minmax(450px,1fr))
         grid-gap: 10px
+        min-width: auto
+        min-height: auto
+        @media (max-width:768px)
+            grid-template-columns: repeat(auto-fill,minmax(300px,1fr))
+        @media (min-width:768px)
+            grid-template-columns: repeat(auto-fill,minmax(300px,1fr))
