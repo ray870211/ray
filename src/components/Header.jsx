@@ -14,7 +14,6 @@ function Header(props) {
       <Link to='/a000f85cddca4cfc83b0ab048bbddbc6' className='navigation'>
         文章
       </Link>
-      <a href='' className='navigation'></a>
     </div>
   );
 }
