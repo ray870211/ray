@@ -2,7 +2,7 @@ export const ProjectsData = [
   {
     id: 0,
     title: "圖書館人臉辨識",
-    preview: require("..//assets/images/人臉辨識.png"),
+    preview: require("../assets/images/face_preview.png"),
     pageId: "3b46badf1f7440dabc776b08c233e32c",
     text: "123",
     system: "WEBSIDE",
@@ -70,7 +70,7 @@ export const ProjectsData = [
   {
     id: 3,
     title: "AsiaLife",
-    preview: require("..//assets/images/Swift1.png"),
+    preview: require("../assets/images/ios-preview4.png"),
     pageId: "4ef59864ebde41039db1ab408d377d84",
     text: "123",
     system: "iOS",
@@ -91,7 +91,7 @@ export const ProjectsData = [
   {
     id: 4,
     title: "俄羅斯方塊",
-    preview: require("..//assets/images/俄羅斯方塊.png"),
+    preview: require("..//assets/images/javatetris_preview.png"),
     pageId: "9239b407658f439696cb26c36754ce22",
     text: "123",
     system: "JAVA",

@@ -5,6 +5,8 @@ import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Card from "react-bootstrap/esm/Card";
 import { motion, useScroll, useAnimationControls, animate } from "framer-motion";
+import { Link } from "react-router-dom";
+
 //sass
 import "../sass/style.sass";
 import "../sass/page/home.sass";
@@ -47,6 +49,8 @@ function reducer(state, action) {
 function Home() {
   //section background image
   const sectionBackgroundImg = [require("../assets/images/pexels-veeterzy-303383.jpg")];
+  //
+  const [menuMessage, setMenuMessage] = useState(false);
   //區塊高度
   const [sectionOffsetTop, setSectionOffsetTop] = useState([]);
   const introductionRef = useRef();
@@ -55,7 +59,6 @@ function Home() {
   const projectRef = useRef();
   const [arriveBottom, setArriveBottom] = useState(false);
   const [overTopView, setOverTopView] = useState(false);
-
   useEffect(() => {
     setSectionOffsetTop([
       introductionRef.current.offsetTop,
@@ -104,7 +107,14 @@ function Home() {
     };
     return S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4();
   }
-
+  //
+  const copyGmail = () => {
+    navigator.clipboard.writeText("ray870211@gmail.com");
+    setMenuMessage("已複製");
+    setTimeout(() => {
+      setMenuMessage(false);
+    }, 3000);
+  };
   return (
     <div className='main'>
       <div className='main-content'>
@@ -139,8 +149,10 @@ function Home() {
                   animate={{ x: 10, y: 0 }}
                   initial={{ x: 1000 }}
                   transition={{ duration: 1.5 }}>
-                  <img className='social-icon' src={github_icon} alt='' />
-                  <img className='social-icon' src={gmail_icon}></img>
+                  <a href='https://github.com/ray870211'>
+                    <img className='social-icon' src={github_icon} alt='' />
+                  </a>
+                  <img onClick={() => copyGmail()} className='social-icon' src={gmail_icon}></img>
                 </motion.div>
               </Col>
               <Col md={6} className='mail'>
@@ -270,7 +282,7 @@ function Home() {
         modalShow={projectState.modalShow}></ProjectsModal>
       <div className='menu'>
         <motion.div animate={arriveBottom ? "closed" : "open"} variants={menuDisplay}>
-          <Menu sectionOffsetTop={sectionOffsetTop}></Menu>
+          <Menu menuMessage={menuMessage} sectionOffsetTop={sectionOffsetTop}></Menu>
         </motion.div>
       </div>
     </div>

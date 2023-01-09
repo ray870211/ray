@@ -42,7 +42,7 @@ function Menu(props) {
         <div className='menu-buttons'>
           <motion.div animate={hamburgerIsClick ? "closed" : "open"} variants={primaryAnimate}>
             <div className={hamburgerIsClick ? "primary" : "primary"}>
-              <a>Home</a>
+              <a> {props.menuMessage ? props.menuMessage : "home"}</a>
               {hamburgerIsClick ? (
                 <div className='cancel_button' onClick={() => cancelButtonClick()}>
                   <div></div>
@@ -58,7 +58,6 @@ function Menu(props) {
               )}
             </div>
           </motion.div>
-
           <motion.div animate={hamburgerIsClick ? "closed" : "open"} variants={selectButtonAnimate}>
             <div className='select-button'>
               {/* <p>text</p> */}
